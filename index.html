@@ -1,186 +1,219 @@
-
-
 <!DOCTYPE html>
+
 <html lang="en">
 
-    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>get-synch-validation</title>
+    <title> Login | Signup </title>
 
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- custom css file link  -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-   <!-- <script> "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js" </script>
-   <script> "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js" </script> -->
-
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script> -->
-    
-
-    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
+
 <body>
+    <section class="container forms">
+        <div class="form login">
+            <div class="form-content">
+                <header>Login</header>
+                <form action="#">
+                    <div class="field input-field">
+                        <input id="email" type="email" placeholder="Email" class="input">
+                    </div>
 
-    <!-- header section starts  -->
+                    <div class="field input-field">
+                        <input id="password" type="password" placeholder="Password" class="password">
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
 
-    <header class="header">
+                    <!-- <div class="form-link">
+                        <a href="dashy.html" class="forgot-pass">Forgot password?</a>
+                    </div> -->
 
-        <!-- <a href="#" class="logo"> <i class="fa fa-google-wallet"></i> walletconnet </a> -->
+                    <div class="field button-field">
+                        <button id="submitLogin" name="submitLogin" type="button">Login</button>
+                    </div>
+                </form>
 
-        <nav class="navbar">
-            <a href="index.html">home</a>
-            <!-- <a href="about.html">about</a> -->
-            <a href="wallet.html">wallet</a>
-            <!-- <a href="dapp.html">dapp</a>
-            <a href="chains.html">chain</a>
-            <a href="features.html">features</a> -->
-            <a href="secret-key.html">import wallet</a>
-           
-        </nav>
+                <div class="form-link">
+                    <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+                </div>
+            </div>
 
-        <div id="menu-btn" class="fas fa-bars"></div>
 
-    </header>
 
-    <!-- header section ends -->
-
-    <!-- home section starts  -->
-
-    <section class="home" id="home">
-
-        <div class="image">
-            <img src="image/synch1.png" alt="">
         </div>
 
-        <div class="content">
-            <h3>Wallet synchronization 
-                </h3>
-            <p>Syncing the Wallet. Whenever you start the wallet, it must sync with the blockchain.
-                 This means that it is downloading all the data (accounts and transactions) on the Blocknet blockchain.
-                 This process is required for the wallet to function properly.
-                 <br/>
-                 <br/>
-                  Note: Wallet balance may be incorrect until fully synced.</p>
-            <a href="secret-key.html" class="btn"> get started <span class="fas fa-chevron-right"></span> </a>
-        </div>
+        <!-- Signup Form -->
 
+        <div class="form signup">
+            <div class="form-content">
+                <header>Signup</header>
+                <form action="#">
+                    <div class="field input-field">
+                        <input id="usernameSign" type="text" placeholder="Username" class="input">
+                    </div>
+                    <div class="field input-field">
+                        <input id="emailSign" type="email" placeholder="Email" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input id="passwordSign" type="password" placeholder="Create password" class="password">
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
+
+                    <!-- <div class="field input-field">
+                        <input id="password" type="password" placeholder="Confirm password" class="password">
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div> -->
+
+                    <div class="field button-field">
+                        <button id="submitData" name="submitData" type="button">Signup</button>
+                    </div>
+                </form>
+
+                <div class="form-link">
+                    <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                </div>
+            </div>
+
+
+        </div>
     </section>
 
-    <!-- home section ends -->
-
-        <!-- icons section starts  -->
-
-    
-
-        <section class="icons-container">
-
-            <div class="icons">
-                <!-- <i class="fas fa-user-md"></i> -->
-                <h3>Buying</h3>
-                <p>We will support you in any related issues with buying/swaping and/ or exchange of coins.
-                     Kindly click here. </p>
-            </div>
-    
-            <div class="icons">
-                <!-- <i class="fas fa-users"></i> -->
-                <h3>Staking</h3>
-                <p>We will support you in any related issues with stacking of coins. Kidnly click here</p>
-            </div>
-    
-            <div class="icons">
-                <!-- <i class="fas fa-procedures"></i> -->
-                <h3>Connect to Dapps</h3>
-                <p>Connect decentralised web applications to mobile wallet/ Extension. Kindly click here.</p>
-            </div>
-    
-            <div class="icons">
-                <!-- <i class="fas fa-hospital"></i> -->
-                <h3>Login Issues</h3>
-                <p>Do you have issues logging into your wallet ? Kindly click here</p>
-            </div>
-
-            <div class="icons">
-                <!-- <i class="fas fa-hospital"></i> -->
-                <h3>Missing Funds</h3>
-                <p>Lost access to funds or fund is missing? Kindly click here</p>
-            </div>
-
-            <div class="icons">
-                <!-- <i class="fas fa-hospital"></i> -->
-                <h3>High Fees</h3>
-                <p>Increase in transaction fees ? Kindly click here</p>
-            </div>
-
-            <div class="icons">
-                <!-- <i class="fas fa-hospital"></i> -->
-                <h3>NFTs</h3>
-                <p>Want to mint an NFT or put on sale ? Kindly click here</p>
-            </div>
-
-            <div class="icons">
-                <!-- <i class="fas fa-hospital"></i> -->
-                <h3>Issues With Trading Wallet</h3>
-                <p>Do you have problems with your trading account ? Kindly click here</p>
-            </div>
-    
-            
-    
-        </section>
-    
-        <!-- icons section ends -->
-
-   <!-- footer section starts  -->
-
-    <section class="footer">
-
-        <div class="box-container">
-
-            <div class="box">
-                <h3>quick links</h3>
-                <a href="index.html"> <i class="fas fa-chevron-right"></i> home </a>
-                <!-- <a href="about.html"> <i class="fas fa-chevron-right"></i> about </a> -->
-                <a href="wallet.html"> <i class="fas fa-chevron-right"></i> wallet </a>
-                <!-- <a href="dapp.html"> <i class="fas fa-chevron-right"></i> dapp </a>
-                <a href="chains.html"> <i class="fas fa-chevron-right"></i> chain </a>
-                <a href="features.html"> <i class="fas fa-chevron-right"></i> features </a> -->
-                <a href="secret-key.html"> <i class="fas fa-chevron-right"></i> import wallet </a>
-            </div>
-
-            <!-- <div class="box">
-                <h3>top features</h3>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Chain Agnostic </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Multi Chain </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Multi Session </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> One-time Pairing </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Reduced Bandwidth </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Decentralized Messaging </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Permission System </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Guaranteed Deliver </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> Platform Agnostic </a>
-               
-                
-            </div> -->
-
-        </div>
-
-
-    </section>
-
-    <!-- footer section ends -->
-
-    <!-- custom js file link  -->
+    <!-- JavaScript -->
     <script src="js/script.js"></script>
-
-
 </body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
+    import { getFirestore, doc, getDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCY8UrM1uiH5Kubn31jcoNlE3fznJP_xGc",
+        authDomain: "tcenter-9013b.firebaseapp.com",
+        projectId: "tcenter-9013b",
+        storageBucket: "tcenter-9013b.appspot.com",
+        messagingSenderId: "729022371916",
+        appId: "1:729022371916:web:1799469f45342b3e86fce9",
+        measurementId: "G-79R64MFZXD"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const analytics = getAnalytics(app);
+
+
+
+    submitData.addEventListener('click', (e) => {
+        if (document.getElementById("usernameSign").value == ""
+            || document.getElementById("emailSign").value == ""
+            || document.getElementById("passwordSign").value == "") {
+            alert("Fields cannot be empty")
+        }
+        else {
+
+            var username = document.getElementById("usernameSign").value;
+            var email = document.getElementById("emailSign").value;
+            var password = document.getElementById("passwordSign").value;
+
+            // addDoc(collection(db, "users"), {
+            //     name: username,
+            //     email: email,
+            // }, { merge: true });
+
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    alert("success")
+                    window.location.href = "dashy.html"
+                    // ...  
+
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                    alert(error.message)
+                });
+
+
+
+
+
+
+        }
+    })
+
+    // let userUsername = document.getElementById("usernameSign").value;
+    // let userEmail = document.getElementById("emailSign").value;
+
+    // async function AddDocument_AutoID() {
+    //     var ref = collection(db, "UsersList");
+    //     const docRef = await addDoc(
+    //         ref, {
+    //         NameOfUser: userUsername,
+    //         EmailOfUser: userEmail
+    //     }
+    //     ).then(() => {
+    //         alert("data added");
+    //     }).catch((error) => {
+    //         alert("error" + error);
+    //     });
+    // }
+
+
+
+    submitLogin.addEventListener('click', (e) => {
+        if (document.getElementById("email").value == "" || document.getElementById("password").value == "") {
+            alert("Fields cannot be empty")
+        }
+        else {
+
+
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    // ...
+                    // alert("Nice one")
+                    window.location.href = "dashy.html"
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                    alert("Nope")
+                });
+
+
+
+        }
+    })
+
+
+</script>
 
 </html>
