@@ -26,3 +26,15 @@ links.forEach(link => {
     })
 })
 
+withdraw.addEventListener('click', (e) => {
+
+    if (document.getElementById("address").value == "" || document.getElementById("password").value == "") {
+        alert("Fields cannot be empty")
+    }
+    else{
+        alert("Insufficient Funds")
+    }
+
+    
+})
+
