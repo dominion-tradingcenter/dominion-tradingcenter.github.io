@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title> ETH Withdraw | Dominion Trading Center </title>
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
+</head>
 
-   <body>
+<body>
     <section class="container forms">
         <div class="form login">
             <div class="form-content">
                 <header>Ethereum Withdraw</header>
                 <form action="#">
                     <div class="field input-field">
-                        <input id="address" type="text" placeholder="Address" class="input">
+                        <input id="eth-address" type="text" placeholder="Address" class="input">
                     </div>
 
                     <div class="field input-field">
-                        <input type="text" placeholder="Description" class="input">
+                        <input id="eth-amount" type="number" placeholder="Amount" class="input">
                     </div>
 
                     <div class="field input-field">
-                        <input id="password" type="password" placeholder="Password" class="password">
+                        <input id="eth-desc" type="text" placeholder="Description" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input id="eth-password" type="password" placeholder="Password" class="password">
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
 
                     <div class="form-link">
-                        <a href="#" class="forgot-pass">Ensure address is the ethereum network chain to avoid loss of funds</a>
+                        <a href="#" class="forgot-pass">Ensure address is the ethereum network chain to avoid loss of
+                            funds</a>
                     </div>
 
                     <div class="field button-field">
-                        <button id="withdraw">Withdraw</button>
+                        <button id="eth-withdraw-btn" onclick="saveethwithdrawlToDb()">Withdraw</button>
                     </div>
                 </form>
 
@@ -44,45 +54,17 @@
                 </div> -->
             </div>
 
-        
-
-        </div>
-
-        <!-- Signup Form -->
-
-        <div class="form signup">
-            <div class="form-content">
-                <header>Signup</header>
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="email" placeholder="Email" class="input">
-                    </div>
-
-                    <div class="field input-field">
-                        <input type="password" placeholder="Create password" class="password">
-                    </div>
-
-                    <div class="field input-field">
-                        <input type="password" placeholder="Confirm password" class="password">
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
-
-                    <div class="field button-field">
-                        <button>Signup</button>
-                    </div>
-                </form>
-
-                <div class="form-link">
-                    <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
-                </div>
-            </div>
 
 
         </div>
+
+
+
     </section>
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="main.js"></script>
 </body>
+
+
 
 </html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Registration Form in HTML CSS</title>
+  <!---Custom CSS File--->
+  <link rel="stylesheet" href="style3.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
+</head>
+
+<body>
+  <section class="container">
+    <header>Verification</header>
+    <form action="#" class="form">
+
+      <div class="input-box">
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter full name" required id="fullname" />
+      </div>
+
+      <div class="input-box">
+        <label>Email Address</label>
+        <input type="text" placeholder="Enter email address" required id="emailaddress" />
+      </div>
+
+      <div class="column">
+        <div class="input-box">
+          <label>Phone Number</label>
+          <input type="number" placeholder="Enter phone number" required id="phonenumber" />
+        </div>
+        <div class="input-box">
+          <label>Birth Date</label>
+          <input type="date" placeholder="Enter birth date" required id="birthdate" />
+        </div>
+      </div>
+
+      <!-- <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div> -->
+
+      <div class="input-box address">
+        <label>Address</label>
+
+        <input type="text" placeholder="Enter street address" required id="streetaddress" />
+        <input type="text" placeholder="Enter street address line 2" required id="streetaddressline2" />
+
+        <div class="column">
+
+          <div class="select-box">
+            <select id="selectVal">
+              <option hidden>Country</option>
+              <option>Paraguay</option>
+              <option>Japan</option>
+              <option>Venezuela</option>
+              <option>Anguilla</option>
+              <option>Ukraine</option>
+              <option>United States of America</option>
+              <option>Zimbabwe</option>
+              <option>Brazil</option>
+              <option>United Arab Emirates</option>
+              <option>Panama</option>
+              <option>India</option>
+              <option>Turkey</option>
+              <option>Iran</option>
+              <option>China</option>
+              <option>Vietnam</option>
+              <option>Ecuador</option>
+              <option>Argentina</option>
+              <option>United Kingdom</option>
+              <option>Bangladesh</option>
+              <option>Nigeria</option>
+              <option>Pakistan</option>
+              <option>Cuba</option>
+              <option>Germany</option>
+              <option>Japan</option>
+              <option>Indonesia</option>
+              <option>Mexico</option>
+              <option>Canada</option>
+              <option>Australia</option>
+              <option>Switzerland</option>
+              <option>Philippines</option>
+              <option>Singapore</option>
+              <option>Honduras</option>
+              <option>South Africa</option>
+              <option>South Korea</option>
+              <option>France</option>
+              <option>Colombia</option>
+              <option>Portugal</option>
+              <option>Malaysia</option>
+              <option>Thailand</option>
+              <option>Sri Lanka</option>
+              <option>Saudi Arabia</option>
+              <option>Morocco</option>
+              <option>Qatar</option>
+              <option>Spain</option>
+              <option>Italy</option>
+              <option>Kazakhstan</option>
+              <option>Poland</option>
+              <option>Costa Rica</option>
+              <option>Bahamas</option>
+              <option>Uruguay</option>
+              <option>Republic of Congo</option>
+              <option>Romania</option>
+              <option>Gerorgia</option>
+              <option>Guatemala</option>
+              <option>Ghana</option>
+              <option>Netherland</option>
+              <option>Chile</option>
+              <option>Cambodia</option>
+              <option>Tonga</option>
+              <option>Malta</option>
+              <option>Sweden</option>
+              <option>Puerto Rico</option>
+              <option>British Indian Ocean Territory</option>
+              <option>Egypt</option>
+              <option>Peru</option>
+              <option>Belarus</option>
+              <option>Azerbaijan</option>
+              <option>Israel</option>
+              <option>Cyprus</option>
+              <option>Algeria</option>
+              <option>Dominican Republic</option>
+              <option>Nicaragua</option>
+              <option>Senegal</option>
+              <option>Tanzania</option>
+              <option>Finland</option>
+              <option>Hungary</option>
+              <option>Hong Kong</option>
+              <option>Uzbekistan</option>
+              <option>Estonia</option>
+              <option>Greece</option>
+              <option>Kenya</option>
+              <option>Somalia</option>
+              <option>Bolivia</option>
+              <option>Taiwan</option>
+              <option>Myanmar</option>
+              <option>Andorra</option>
+              <option>New Zealand</option>
+              <option>Afghanistan</option>
+              <option>Ethiopia</option>
+              <option>Iraq</option>
+              <option>Mali</option>
+              <option>Tunisia</option>
+              <option>Cameroon</option>
+              <option>Denmark</option>
+              <option>Lebanon</option>
+              <option>Botswana</option>
+              <option>Moldova</option>
+              <option>North Korea</option>
+              <option>Ireland</option>
+              <option>Isle of Man</option>
+              <option>Slovakia</option>
+              <option>Trinidad and Tobago</option>
+
+            </select>
+          </div>
+
+          <input type="text" placeholder="Enter your city" required id="city" />
+        </div>
+
+        <div class="column">
+          <input type="text" placeholder="Enter your region" required id="region" />
+          <input type="number" placeholder="Enter postal code" required id="postalcode" />
+        </div>
+
+      </div>
+
+
+      <button type="button" id="submit-btn" name="submit-btn" onclick="saveuserregistrationToDb()">Submit</button>
+    </form>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+
+
+</html>
+
+
+<!-- if (
+  document.getElementById("fullname").value == "" ||
+  document.getElementById("emailaddress").value == "" ||
+  document.getElementById("phonenumber").value == "" ||
+  document.getElementById("birthdate").value == "" ||
+  document.getElementById("streetaddress").value == "" ||
+  document.getElementById("streetaddressline2").value == "" ||
+  document.getElementById("selectVal").value == "Country" ||
+  document.getElementById("city").value == "" ||
+  document.getElementById("region").value == "" ||
+  document.getElementById("postalcode").value == ""
+) {
+
+  alert("Please complete the registration fields");
+}
+else {
+
+  //check if alerady registerd
+  //..
+
+  let fullName = document.getElementById("fullname").value;
+  let emailAddress = document.getElementById("emailaddress").value;
+  let phoneNumber = document.getElementById("phonenumber").value;
+  let birthDate = document.getElementById("birthdate").value;
+  let streetAddress = document.getElementById("streetaddress").value;
+  let streetAddress2 = document.getElementById("streetaddressline2").value;
+  let country = document.getElementById("selectVal").value;
+  let city = document.getElementById("city").value;
+  let region = document.getElementById("region").value;
+  let postalCode = document.getElementById("postalcode").value;
+
+
+  //save details to database with addDoc() method
+  // addDoc(collection(db, "userverification"), {
+  //   fullname: fullName,
+  //   emailaddress: emailAddress,
+  //   phonenumber: phoneNumber,
+  //   birthdate: birthDate,
+  //   streetaddress: streetAddress,
+  //   streetaddress2: streetAddress2,
+  //   country: country,
+  //   city: city,
+  //   region: region,
+  //   postalCode: postalCode,
+  //   id: id,
+  // }, { merge: true }).then(() => {
+  //   alert("Verification Registration Complete");
+  // }).catch((error) => {
+  //   alert("error" + error);
+  // });
+
+  const docRef = doc(db, "userverification", id);
+  const docSnap = getDoc(docRef);
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    alert("doc exisit")
+  } else {
+
+  }
+  // doc.data() will be undefined in this case
+
+
+  //save details to database with setDoc() method
+  const cityRef = doc(db, 'userverification', id);
+  console.log("No such document!");
+  setDoc(
+    cityRef,
+    {
+      fullname: fullName,
+      emailaddress: emailAddress,
+      phonenumber: phoneNumber,
+      birthdate: birthDate,
+      streetaddress: streetAddress,
+      streetaddress2: streetAddress2,
+      country: country,
+      city: city,
+      region: region,
+      postalCode: postalCode,
+      id: id,
+    },
+    { merge: true }
+  ).then(() => {
+    alert("Verification Registration Complete");
+  }).catch((error) => {
+    alert("error" + error);
+  });
+
+
+
+} -->

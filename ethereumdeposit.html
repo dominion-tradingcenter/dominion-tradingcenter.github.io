@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> ETH Deposit | Dominion Trading Center </title>
-    <link rel="stylesheet" href="style2.css">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+
+<head>
+  <meta charset="UTF-8">
+  <title> ETH Deposit | Dominion Trading Center </title>
+  <link rel="stylesheet" href="style2.css">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
+</head>
+
 <body>
 
   <div class="sidebar">
@@ -16,32 +22,38 @@
       <!-- <i class='bx bxl-c-plus-plus'></i> -->
       <span class="logo_name"><box-icon>Dominion Trading Center</box-icon> </span>
     </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#" class="active">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="wallet.html">
-            <i class='bx bx-box' ></i>
-            <span class="links_name">Wallet</span>
-          </a>
-        </li>
-        <li>
-          <a href="fund.html">
-            <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Funds</span>
-          </a>
-        </li>
-        <!-- <li>
-            <a href="profile.html">
-              <i class='bx bx-user' ></i>
-              <span class="links_name">Profile</span>
-            </a>
-          </li> -->
-        <!-- <li>
+    <ul class="nav-links">
+      <li>
+        <a href="#" class="active">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="wallet.html">
+          <i class='bx bx-box'></i>
+          <span class="links_name">Wallet</span>
+        </a>
+      </li>
+      <li>
+        <a href="fund.html">
+          <i class='bx bx-list-ul'></i>
+          <span class="links_name">Funds</span>
+        </a>
+      </li>
+      <li>
+        <a href="registr.html">
+          <i class='bx bx-lock-alt'></i>
+          <span class="links_name">Verification</span>
+        </a>
+      </li>
+      <li>
+        <a href="kyc.html">
+          <i class='bx bx-user'></i>
+          <span class="links_name">KYC</span>
+        </a>
+      </li>
+      <!-- <li>
           <a href="#">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Analytics</span>
@@ -83,13 +95,13 @@
             <span class="links_name">Setting</span>
           </a>
         </li> -->
-        <li class="log_out">
-          <a href="index.html">
-            <i class='bx bx-log-out'></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
+      <li class="log_out" onclick="logout()">
+        <a href="">
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
   </div>
 
 
@@ -222,27 +234,27 @@
           <div class="title">Deposit Ethereum</div>
           <ul class="top-sales-details">
             <li>
-            <a href="#">
-              <img src="images/eth.jpg" alt="">
-              <span class="product">0xFCba1B9662E499Bf40967651174530dc80289007</span>
-            </a>
-            <!-- <span class="price">$1107</span> -->
-          </li>
-          <li>
-            <a href="#">
-              <!-- <img src="images/jeans.jpg" alt=""> -->
-              <span class="product">Ethereum(ERC20)</span>
-            </a>
-            <span class="price">-Network</span>
-          </li>
-          <li>
-            <!-- <a href="#">
+              <a href="#">
+                <img src="images/eth.jpg" alt="">
+                <h3 class="product">0xFCba1B9662E499Bf40967651174530dc80289007</h3>
+              </a>
+              <!-- <span class="price">$1107</span> -->
+            </li>
+            <li>
+              <a href="#">
+                <!-- <img src="images/jeans.jpg" alt=""> -->
+                <span class="product">Ethereum(ERC20)</span>
+              </a>
+              <span class="price">-Network</span>
+            </li>
+            <li>
+              <!-- <a href="#">
               <img src="images/jeans.jpg" alt="">
               <span class="product">Bitcoin</span>
             </a> -->
-            <span class="price">Send only ETH to this address</span>
-          </li>
-         <!-- <li>
+              <span class="price">Send only ETH to this address</span>
+            </li>
+            <!-- <li>
             <a href="#">
               <img src="images/nike.jpg" alt="">
               <span class="product">Nike Sport Shoe</span>
@@ -292,16 +304,19 @@
   </section>
 
   <script>
-   let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".sidebarBtn");
-sidebarBtn.onclick = function() {
-  sidebar.classList.toggle("active");
-  if(sidebar.classList.contains("active")){
-  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-}else
-  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-}
- </script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  </script>
+
+  <script src="main.js"></script>
 
 </body>
+
 </html>

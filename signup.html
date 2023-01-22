@@ -13,20 +13,20 @@
 
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
+
 </head>
 
 
 <body>
-
+    
     <section class="container forms">
         <div class="form login">
             <div class="form-content">
-                <header>Login</header>
+                <header>Signup</header>
                 <form action="#">
                     <div class="field input-field">
                         <input id="email" type="email" placeholder="Email" class="input">
@@ -37,28 +37,26 @@
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
 
-                    <div class="form-link">
-                        <a href="resetpassword.html" class="forgot-pass">Forgot password?</a>
-                    </div>
+                    <!-- <div class="form-link">
+                        <a href="dashy.html" class="forgot-pass">Forgot password?</a>
+                    </div> -->
 
                     <div class="field button-field">
-                        <button id="submitLogin" name="submitLogin" type="button" onclick="login()">Login</button>
+                        <button id="submitLogin" name="submitLogin" type="button" onclick="signup()">SignUp</button>
                     </div>
                 </form>
 
                 <div class="form-link">
-                    <span>Don't have an account? <a href="signup.html">Signup</a></span>
+                    <span>Already have an account? <a href="index.html" >Login</a></span>
                 </div>
             </div>
-
-
 
         </div>
     </section>
 
     <!-- JavaScript -->
     <script src="main.js"></script>
-
+   
 </body>
 
 </html>

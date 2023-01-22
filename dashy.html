@@ -9,6 +9,11 @@
   <!-- Boxicons CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
 </head>
 
 <body>
@@ -37,12 +42,18 @@
           <span class="links_name">Funds</span>
         </a>
       </li>
-      <!-- <li>
-        <a href="profile.html">
-          <i class='bx bx-user'></i>
-          <span class="links_name">Profile</span>
+      <li>
+        <a href="registr.html">
+          <i class='bx bx-lock-alt'></i>
+          <span class="links_name">Verification</span>
         </a>
-      </li> -->
+      </li>
+      <li>
+        <a href="kyc.html">
+          <i class='bx bx-user'></i>
+          <span class="links_name">KYC</span>
+        </a>
+      </li>
       <!-- <li>
           <a href="#">
             <i class='bx bx-pie-chart-alt-2' ></i>
@@ -85,8 +96,8 @@
             <span class="links_name">Setting</span>
           </a>
         </li> -->
-      <li class="log_out" id="logOut">
-        <a href="index.html">
+      <li class="log_out" id="logOut" onclick="logout()">
+        <a href="">
           <i class='bx bx-log-out'></i>
           <span class="links_name">Log out</span>
         </a>
@@ -105,11 +116,11 @@
         <input type="text" placeholder="Search...">
         <i class='bx bx-search' ></i>
       </div> -->
-      <div class="profile-details">
+      <!-- <div class="profile-details">
         <img src="images/profile.jpg" alt="">
         <span class="admin_name">ID: 23478</span>
         <i class='bx bx-chevron-down'></i>
-      </div>
+      </div> -->
     </nav>
 
     <div class="home-content">
@@ -241,7 +252,7 @@
     </div>
   </section>
 
-  <script type="module">
+  <script>
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");
     sidebarBtn.onclick = function () {
@@ -251,42 +262,9 @@
       } else
         sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     }
-
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
-    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyARtsaLHFjVfkN7HJXxeYnzxLVuBvmuLzs",
-      authDomain: "tradetest-e2939.firebaseapp.com",
-      projectId: "tradetest-e2939",
-      storageBucket: "tradetest-e2939.appspot.com",
-      messagingSenderId: "703948230554",
-      appId: "1:703948230554:web:1db48be5e141daa7eef423"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-
-    logOut.addEventListener('click', (e) => {
-      signOut(auth).then(() => {
-        // Sign-out successful.
-        // alert("out")
-        window.location.href="index.html"
-      }).catch((error) => {
-        alert("nope")
-        // An error happened.
-      });
-    })
-
-
   </script>
-
+  <script src="main.js">
+  </script>
 </body>
 
 </html>
