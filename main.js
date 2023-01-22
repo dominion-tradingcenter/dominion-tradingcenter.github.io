@@ -16,10 +16,13 @@ const storage = firebase.storage();
 
 const signup = () => {
 
-    if (document.getElementById("email").value == "" || document.getElementById("password").value == "") {
+    if (document.getElementById("email").value == "" ||
+        document.getElementById("password").value == ""
+    ) {
         alert("Fields cannot be empty")
     }
     else {
+
 
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
@@ -40,6 +43,7 @@ const signup = () => {
             });
 
         // console.log(email, password)
+
     }
 }
 
