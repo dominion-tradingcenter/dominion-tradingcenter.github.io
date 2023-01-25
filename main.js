@@ -80,7 +80,7 @@ const logout = () => {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
         window.location.href = "index.html"
-        
+
     }).catch((error) => {
         // An error happened.
     });
@@ -460,9 +460,57 @@ const getusersusdwallet = () => {
 
 }
 
+const getuserstrades = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+
+            var uid = user.uid;
+
+            var docRef = db.collection("users-trade").doc(uid);
+            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+
+
+            docRef.get().then((doc) => {
+                if (doc.exists) {
+
+                    let tradePair = document.getElementById("tradepair")
+                    let tradeDate = document.getElementById("tradedate")
+                    let tradeProfit = document.getElementById("tradeprofit")
+                    let tradeType = document.getElementById("tradetype")
+
+
+                    tradePair.textContent = doc.data().tradepair
+                    tradeDate.textContent = doc.data().tradedate
+                    tradeProfit.textContent = doc.data().tradeprofit
+                    tradeType.textContent = doc.data().tradetype
+
+
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+
+
+            // ...
+        } else {
+            // User is signed out
+            // ...
+        }
+    });
+
+}
+
 getusersbtcwallet();
 getusersethwallet();
 getusersusdwallet();
+getuserstrades();
 
 let fileInput = document.getElementById("file-input");
 let imageContainer = document.getElementById("images");
@@ -495,18 +543,29 @@ function preview() {
 }
 
 const uploadFile = () => {
-    var storageRef = firebase.storage().ref();
-    var mountainImagesRef = storageRef.child('images/' + fileInput.files.name);
-    var mountainImagesRef2 = storageRef.child('newimages/' + fileInput.files.name);
 
-    mountainImagesRef.put(fileInput.files[0]).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
+    firebase.auth().onAuthStateChanged((user) => {
+
+        if (user) {
+
+
+            var storageRef = firebase.storage().ref();
+            var mountainImagesRef = storageRef.child('images/' + user.uid);
+            var mountainImagesRef2 = storageRef.child('newimages/' + user.uid);
+
+            mountainImagesRef.put(fileInput.files[0]).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            });
+
+            mountainImagesRef2.put(fileInput.files[1]).then((snapshot) => {
+                console.log('2nd Uploaded a blob or file!');
+            });
+
+        }
+        else {
+
+        }
     });
-
-    mountainImagesRef2.put(fileInput.files[1]).then((snapshot) => {
-        console.log('2nd Uploaded a blob or file!');
-    });
-
 
 
 }
