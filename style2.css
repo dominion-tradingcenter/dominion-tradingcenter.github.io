@@ -185,6 +185,15 @@ nav .profile-details i{
   margin-bottom: 26px;
   
 }
+
+.home-content .overview-boxes .box {
+  background: #b2b4b7;
+  border-radius: 7px;
+}
+
+.home-content .overview-boxes a{
+  text-decoration: none;
+}
 .overview-boxes .box a{
   display: flex;
   align-items: center;
@@ -192,7 +201,7 @@ nav .profile-details i{
   width: calc(100% / 4 - 15px);
   background: #fff;
   padding: 15px 14px;
-  border-radius: 12px;
+  border-radius: 15px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   text-decoration: none;
 }
