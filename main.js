@@ -11,6 +11,8 @@ const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 const storage = firebase.storage();
 
+const usdam = [];
+
 
 
 
@@ -76,6 +78,7 @@ const login = () => {
         // console.log(email, password)
     }
 }
+
 const logout = () => {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
@@ -134,7 +137,7 @@ const savebtcwithdrawlToDb = () => {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 var uid = user.uid;
-                console.log(uid)
+
 
                 db.collection("btc-withdrawals").doc(uid).set({
                     btcaddress: btcAddress,
@@ -144,13 +147,13 @@ const savebtcwithdrawlToDb = () => {
                 }, { merge: true })
                     .then(() => {
                         alert("Withrawal Request Sent")
-                        console.log("Document successfully written!");
+
                     })
                     .catch((error) => {
-                        console.error("Error writing document: ", error);
+                        // console.error("Error writing document: ", error);
                     });
 
-                    alert("Withdraw Request sent");
+                alert("Withdraw Request sent");
                 // ...
             } else {
                 // User is signed out
@@ -188,7 +191,7 @@ const saveethwithdrawlToDb = () => {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 var uid = user.uid;
-                console.log(uid)
+
 
                 db.collection("eth-withdrawals").doc(uid).set({
                     ethaddress: ethAddress,
@@ -198,13 +201,13 @@ const saveethwithdrawlToDb = () => {
                 }, { merge: true })
                     .then(() => {
                         alert("Withrawal Request Sent")
-                        console.log("Document successfully written!");
+
                     })
                     .catch((error) => {
-                        console.error("Error writing document: ", error);
+                        // console.error("Error writing document: ", error);
                     });
 
-                    alert("Withdraw Request sent");
+                alert("Withdraw Request sent");
                 // ...
             } else {
                 // User is signed out
@@ -231,7 +234,7 @@ const saveusdwithdrawlToDb = () => {
             // User is signed in, see docs for a list of available properties
             // https://firebase.google.com/docs/reference/js/firebase.User
             var uid = user.uid;
-            console.log(uid)
+
 
             db.collection("usd-withdrawals").doc(uid).set({
                 usdaddress: usdAddress,
@@ -241,13 +244,13 @@ const saveusdwithdrawlToDb = () => {
             }, { merge: true })
                 .then(() => {
                     alert("Withrawal Request Sent")
-                    console.log("Document successfully written!");
+
                 })
                 .catch((error) => {
-                    console.error("Error writing document: ", error);
+                    // console.error("Error writing document: ", error);
                 });
 
-                alert("Withdraw Request sent");
+            alert("Withdraw Request sent");
             // ...
         } else {
             // User is signed out
@@ -297,7 +300,7 @@ const saveuserregistrationToDb = () => {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 var uid = user.uid;
-                console.log(uid)
+
 
                 db.collection("users-registration").doc(uid).set({
                     fullname: fullName,
@@ -313,13 +316,13 @@ const saveuserregistrationToDb = () => {
                 }, { merge: true })
                     .then(() => {
                         alert("Registration Completed")
-                        console.log("Document successfully written!");
+
                     })
                     .catch((error) => {
-                        console.error("Error writing document: ", error);
+                        // console.error("Error writing document: ", error);
                     });
 
-                    alert("Verification Form Filled Successfully");
+                alert("Verification Form Filled Successfully");
                 // ...
             } else {
                 // User is signed out
@@ -333,7 +336,6 @@ const saveuserregistrationToDb = () => {
 }
 
 const getusersbtcwallet = () => {
-
 
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -350,7 +352,7 @@ const getusersbtcwallet = () => {
 
             docRef.get().then((doc) => {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data().currentamount);
+                    // console.log("Document data:", doc.data().currentamount);
 
                     let btcbalance = document.getElementById("btcBalanceAmount")
                     let btcamountonhold = document.getElementById("btcAmountOnHold")
@@ -358,10 +360,10 @@ const getusersbtcwallet = () => {
                     btcamountonhold.textContent = doc.data().amountonhold
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
             });
 
 
@@ -371,8 +373,6 @@ const getusersbtcwallet = () => {
             // ...
         }
     });
-
-
 
 }
 
@@ -394,7 +394,7 @@ const getusersethwallet = () => {
 
             docRef.get().then((doc) => {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data().currentamount);
+
 
                     let ethbalance = document.getElementById("ethBalanceAmount")
                     let ethamountonhold = document.getElementById("ethAmountOnHold")
@@ -402,10 +402,10 @@ const getusersethwallet = () => {
                     ethamountonhold.textContent = doc.data().amountonhold
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
             });
 
 
@@ -429,6 +429,7 @@ const getusersusdwallet = () => {
             // https://firebase.google.com/docs/reference/js/firebase.User
 
             var uid = user.uid;
+            
 
             var docRef = db.collection("usd-wallets").doc(uid);
             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
@@ -437,20 +438,30 @@ const getusersusdwallet = () => {
 
 
             docRef.get().then((doc) => {
-                if (doc.exists) {
-                    console.log("Document data:", doc.data().currentamount);
 
-                    let usdbalance = document.getElementById("usdbalance-amount")
-                    let usdamountonhold = document.getElementById("usdamountOnHold")
-                    usdbalance.textContent = doc.data().currentamount
-                    usdamountonhold.textContent = doc.data().amountonhold
+                if (doc.exists) {
+
+                    let usdbalance = document.getElementById("usdbalance-amount");
+                    let usdamountonhold = document.getElementById("usdamountOnHold");
+                    usdbalance.textContent = doc.data().currentamount;
+                    usdamountonhold.textContent = doc.data().amountonhold;
+
+                    
+
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
+
+                    
                 }
+
+                
+
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
+                return error;
             });
+
 
 
             // ...
@@ -463,6 +474,63 @@ const getusersusdwallet = () => {
 
 
 }
+
+
+// function getuserusdwallets (){
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//             // User is signed in, see docs for a list of available properties
+//             // https://firebase.google.com/docs/reference/js/firebase.User
+
+//             var uid = user.uid;
+            
+
+//             var docRef = db.collection("usd-wallets").doc(uid);
+//             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+//             // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+
+
+//             docRef.get().then((doc) => {
+
+//                 if (doc.exists) {
+
+//                     let usdbalance = document.getElementById("usdbalance-amount");
+//                     let usdamountonhold = document.getElementById("usdamountOnHold");
+//                     usdbalance.textContent = doc.data().currentamount;
+//                     usdamountonhold.textContent = doc.data().amountonhold;
+
+                    
+//                     console.log(doc.data().currentamount);
+
+                    
+                
+
+//                 } else {
+//                     // doc.data() will be undefined in this case
+//                     // console.log("No such document!");
+
+                    
+//                 }
+
+                
+
+//             }).catch((error) => {
+//                 // console.log("Error getting document:", error);
+//                 return error;
+//             });
+
+
+
+//             // ...
+//         } else {
+//             // User is signed out
+//             // ...
+//         }
+//     });
+
+
+// }
 
 const getusersteslawallet = () => {
 
@@ -482,7 +550,7 @@ const getusersteslawallet = () => {
 
             docRef.get().then((doc) => {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data().currentamount);
+
 
                     let teslabalance = document.getElementById("teslabalance-amount")
                     let teslaamountonhold = document.getElementById("teslaamountOnHold")
@@ -490,10 +558,10 @@ const getusersteslawallet = () => {
                     teslaamountonhold.textContent = doc.data().amountonhold
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
             });
 
 
@@ -526,7 +594,6 @@ const getusersmetawallet = () => {
 
             docRef.get().then((doc) => {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data().currentamount);
 
                     let metabalance = document.getElementById("metabalance-amount")
                     let metaamountonhold = document.getElementById("metaamountOnHold")
@@ -534,10 +601,10 @@ const getusersmetawallet = () => {
                     metaamountonhold.textContent = doc.data().amountonhold
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
             });
 
 
@@ -570,7 +637,6 @@ const getusersapplewallet = () => {
 
             docRef.get().then((doc) => {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data().currentamount);
 
                     let applebalance = document.getElementById("applebalance-amount")
                     let appleamountonhold = document.getElementById("appleamountOnHold")
@@ -578,10 +644,10 @@ const getusersapplewallet = () => {
                     appleamountonhold.textContent = doc.data().amountonhold
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
             });
 
 
@@ -627,10 +693,10 @@ const getuserstrades = () => {
 
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
             });
 
 
@@ -674,6 +740,8 @@ getusersapplewallet();
 getusersusdwallet();
 getuserstrades();
 
+
+
 let fileInput = document.getElementById("file-input");
 let imageContainer = document.getElementById("images");
 let numOfFiles = document.getElementById("num-of-files");
@@ -701,7 +769,7 @@ function preview() {
         reader.readAsDataURL(i);
     }
 
-    console.log(fileInput.files[0])
+    // console.log(fileInput.files[0])
 }
 
 const uploadFile = () => {
@@ -710,35 +778,150 @@ const uploadFile = () => {
 
         if (user) {
 
-            if(fileInput.files.length == 2) {
+            if (fileInput.files.length == 2) {
                 var storageRef = firebase.storage().ref();
                 var mountainImagesRef = storageRef.child('images/' + user.uid);
                 var mountainImagesRef2 = storageRef.child('newimages/' + user.uid);
-    
+
                 mountainImagesRef.put(fileInput.files[0]).then((snapshot) => {
-                    console.log('Uploaded a blob or file!');
+                    // console.log('Uploaded a blob or file!');
                 });
-    
+
                 mountainImagesRef2.put(fileInput.files[1]).then((snapshot) => {
-                    console.log('2nd Uploaded a blob or file!');
+                    // console.log('2nd Uploaded a blob or file!');
                 });
 
                 alert("KYC Verification now processing...")
             }
-            else{
-                console.log("not")
+            else {
+
                 alert("Select 2 photos")
             }
 
-            
+
 
         }
         else {
 
-            
+
 
         }
     });
+
+
+}
+
+var selectedAssets;
+var choosenAmount;
+
+const exchangeAssets = () => {
+
+
+
+    firebase.auth().onAuthStateChanged((user) => {
+
+
+
+        if (user) {
+
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+
+            let uid = user.uid;
+
+            if (document.getElementById("selectVal").value == "Assets" || document.getElementById("amounttoexchange").value == "") {
+                alert("Make sure to all fields are completed");
+            }
+            else {
+                selectedAssets = document.getElementById("selectVal").value;
+                choosenAmount = document.getElementById("amounttoexchange").value;
+
+                var docRef = db.collection("usd-wallets").doc(uid);
+
+
+                // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+                // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+                //get users usd wallet
+                docRef.get().then((doc) => {
+                    if (doc.exists) {
+
+
+                        console.log("Document data:", doc.data().currentamount);
+
+
+                            currentUsdAmount = doc.data().currentamount;
+                            
+                            
+
+                    } else {
+                        // doc.data() will be undefined in this case
+                        console.log("No such document!");
+                    }
+                }
+                ).catch((error) => {
+                    console.log("Error getting document:", error);
+
+
+                });
+
+                console.log(currentUsdAmount);
+
+
+                //Check if funds are available
+                // if (currentUsdAmount < choosenAmount) {
+                //     console.log("Not enough funds")
+                // }
+                // else {
+
+                //     if (selectedAssets == "Bitcoin") {
+
+                //         console.log("You Sellected btc", currentUsdAmount)
+
+
+                //         var docRef = db.collection("btc-wallets").doc(uid);
+
+                //         docRef.get().then((doc) => {
+                //             if (doc.exists) {
+                //                 // console.log("Document data:", doc.data().currentamount);
+
+                //                 let btcbalance = document.getElementById("btcBalanceAmount")
+                //                 let btcamountonhold = document.getElementById("btcAmountOnHold")
+                //                 btcbalance.textContent = doc.data().currentamount
+                //                 btcamountonhold.textContent = doc.data().amountonhold
+
+                //                 console.log(currentUsdAmount, choosenAmount)
+                //             } else {
+                //                 // doc.data() will be undefined in this case
+                //                 // console.log("No such document!");
+                //             }
+                //         }).catch((error) => {
+                //             // console.log("Error getting document:", error);
+                //         });
+
+
+
+                //     }
+
+
+
+                // }
+
+               
+
+            }
+
+
+            // ...
+        }
+        else {
+            // User is signed out
+            // ...
+        }
+
+
+    });
+
 
 
 }

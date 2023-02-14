@@ -10,6 +10,11 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
 </head>
 
 <body>
@@ -23,7 +28,7 @@
 
                     <div class="field input-field">
                         <select id="selectVal">
-                          <option hidden>Exchange for</option>
+                          <option hidden>Assets</option>
                           <option>Bitcoin </option>
                           <option>Ethereum</option>
                           <option>Meta</option>
@@ -36,11 +41,11 @@
 
 
                     <div class="field input-field">
-                        <input type="text" placeholder="Amount" class="input">
+                        <input id="amounttoexchange"type="text" placeholder="Amount" class="input">
                     </div>
 
                     <div class="field button-field">
-                        <button>Exchange</button>
+                        <button onclick="exchangeAssets()">Exchange</button>
                     </div>
                 </form>
 
@@ -52,6 +57,7 @@
         </div>
     </section>
 
+    <script src="main.js"></script>
 </body>
 
 </html>
