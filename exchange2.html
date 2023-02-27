@@ -10,6 +10,11 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
 </head>
 
 <body>
@@ -40,18 +45,19 @@
                     </div>
 
                     <div class="field button-field">
-                        <button>Exchange</button>
+                        <button onclick="exchangeAssets2()">Exchange</button>
                     </div>
                 </form>
 
                 <div class="form-link">
-                    <span>Exchange to USD instead? <a href="exchange.html">click here</a></span>
+                    <span>Exchange from USD instead? <a href="exchange.html">click here</a></span>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <script src="main.js"></script>
 </body>
 
 </html>
