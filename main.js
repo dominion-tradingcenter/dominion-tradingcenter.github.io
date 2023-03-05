@@ -663,16 +663,89 @@ const getuserstrades = () => {
             docRef.get().then((doc) => {
                 if (doc.exists) {
 
-                    let tradePair = document.getElementById("tradepair")
                     let tradeDate = document.getElementById("tradedate")
                     let tradeProfit = document.getElementById("tradeprofit")
-                    let tradeType = document.getElementById("tradetype")
+
+                    let tradeDate2 = document.getElementById("tradedate2")
+                    let tradeProfit2 = document.getElementById("tradeprofit2")
+
+                    let tradeDate3 = document.getElementById("tradedate3")
+                    let tradeProfit3 = document.getElementById("tradeprofit3")
+
+                    let tradeDate4 = document.getElementById("tradedate4")
+                    let tradeProfit4 = document.getElementById("tradeprofit4")
+
+                    let tradeDate5 = document.getElementById("tradedate5")
+                    let tradeProfit5 = document.getElementById("tradeprofit5")
 
 
-                    tradePair.textContent = doc.data().tradepair
+                    
                     tradeDate.textContent = doc.data().tradedate
+                    tradeDate2.textContent = doc.data().tradedate2
+                    tradeDate3.textContent = doc.data().tradedate3
+                    tradeDate4.textContent = doc.data().tradedate4
                     tradeProfit.textContent = doc.data().tradeprofit
-                    tradeType.textContent = doc.data().tradetype
+                    tradeProfit2.textContent = doc.data().tradeprofit2
+                    tradeProfit3.textContent = doc.data().tradeprofit3
+                    tradeProfit4.textContent = doc.data().tradeprofit4
+
+
+                } else {
+                    // doc.data() will be undefined in this case
+                    // console.log("No such document!");
+                }
+            }).catch((error) => {
+                // console.log("Error getting document:", error);
+            });
+
+
+            // ...
+        } else {
+            // User is signed out
+            // ...
+        }
+    });
+
+}
+
+
+const getuserstransaction = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+
+            var uid = user.uid;
+
+            var docRef = db.collection("users-transaction").doc(uid);
+            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+
+
+            docRef.get().then((doc) => {
+                if (doc.exists) {
+
+                    let transactiondate = document.getElementById("transactiondate")
+                    let transactiondate2 = document.getElementById("transactiondate2")
+
+                    let transactiontype = document.getElementById("transactiontype")
+                    let transactiontype2 = document.getElementById("transactiontype2")
+
+
+                    let transactionamount = document.getElementById("transactionamount")
+                    let transactionamount2 = document.getElementById("transactionamount2")
+
+
+                    
+                    transactiondate.textContent = doc.data().transactiondate
+                    transactiondate2.textContent = doc.data().transactiondate2
+
+                    transactiontype.textContent = doc.data().transactiontype
+                    transactiontype2.textContent = doc.data().transactiontype2
+
+                    transactionamount.textContent = doc.data().transactionamount
+                    transactionamount2.textContent = doc.data().transactionamount2
 
 
                 } else {
@@ -723,6 +796,7 @@ getusersmetawallet();
 getusersapplewallet();
 getusersusdwallet();
 getuserstrades();
+getuserstransaction();
 
 
 
