@@ -942,14 +942,14 @@ const exchangeAssets = () => {
 
             if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" ||
                 uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" ||
-                uid === "RtPlwXqnsAgic4y73eW7g4SuMz33") {
+                uid === "06cgtCpQSgVijfFSRnmzqnQ77Sl2") {
 
                 if (document.getElementById("selectVal").value == "Assets" || document.getElementById("amounttoexchange").value == "") {
                     alert("Make sure to all fields are completed");
                 }
                 else {
 
-                    alert("Error: USD (15%) Commision fee required")
+                    alert("Error: USD Commision fee required")
                     selectedAssets = document.getElementById("selectVal").value;
                     choosenAmount = document.getElementById("amounttoexchange").value;
 
