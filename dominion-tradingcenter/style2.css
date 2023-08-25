@@ -187,7 +187,7 @@ nav .profile-details i{
 }
 
 .home-content .overview-boxes .box {
-  background: #b2b4b7;
+  background: #e9e9eb;
   border-radius: 7px;
 }
 
@@ -353,7 +353,7 @@ nav .profile-details i{
 .sales-boxes .top-sales li .product,
 .price{
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 700;
   color: #333;
 }
 /* Responsive Media Query */

