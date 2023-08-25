@@ -416,6 +416,47 @@ const getusersbtcwallet = () => {
 
 }
 
+const getusersbtcwallet2 = () => {
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+
+            var uid = user.uid;
+
+            var docRef = db.collection("btc-wallets").doc(uid);
+            // const btcBalanceAmount = document.getElementById("btcBalanceAmount").value;
+            // const btcAmountOnHold = document.getElementById("btcAmountOnHold").value;
+
+
+
+            docRef.get().then((doc) => {
+                if (doc.exists) {
+                    // console.log("Document data:", doc.data().currentamount);
+
+                    let withdrawamt = document.getElementById("withdrawamt");
+                    let withdrawfee = document.getElementById("withdrawfee");
+                    withdrawamt.textContent = doc.data().currentamount
+                    withdrawfee.textContent = "withdrawal fee: " + doc.data().amountonhold
+                } else {
+                    // doc.data() will be undefined in this case
+                    // console.log("No such document!");
+                }
+            }).catch((error) => {
+                // console.log("Error getting document:", error);
+            });
+
+
+            // ...
+        } else {
+            // User is signed out
+            // ...
+        }
+    });
+
+}
+
 const getusersethwallet = () => {
 
 
@@ -436,10 +477,18 @@ const getusersethwallet = () => {
                 if (doc.exists) {
 
 
-                    let ethbalance = document.getElementById("ethBalanceAmount")
-                    let ethamountonhold = document.getElementById("ethAmountOnHold")
+                    let ethbalance = document.getElementById("ethBalanceAmount");
+                    let ethamountonhold = document.getElementById("ethAmountOnHold");
+
                     ethbalance.textContent = doc.data().currentamount
                     ethamountonhold.textContent = doc.data().amountonhold
+
+                    let withdrawamt = document.getElementById("withdrawamt");
+                    let withdrawfee = document.getElementById("withdrawfee");
+
+                    
+                    withdrawamt.textContent = doc.data().currentamount
+                    withdrawfee.textContent = doc.data().amountonhold
                 } else {
                     // doc.data() will be undefined in this case
                     // console.log("No such document!");
@@ -459,6 +508,8 @@ const getusersethwallet = () => {
 
 
 }
+
+
 
 const getusersusdwallet = () => {
 
@@ -790,6 +841,7 @@ const getusersid = () => {
 
 getusersid();
 getusersbtcwallet();
+getusersbtcwallet2();
 getusersethwallet();
 
 getusersusdwallet();
