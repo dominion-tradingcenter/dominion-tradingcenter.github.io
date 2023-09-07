@@ -72,6 +72,8 @@ const login = () => {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                alert("Something went wrong")
+                console.log(console.log(errorMessage, errorCode));
                 // ..
             });
 
@@ -99,14 +101,16 @@ const resetPassword = () => {
 
         const resetEmail = document.getElementById("reset-email").value
 
-        firebase.auth().sendPasswordResetEmail(email)
+        firebase.auth().sendPasswordResetEmail(resetEmail)
             .then(() => {
+                alert("Password reset email sent!")
                 // Password reset email sent!
                 // ..
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                console.log(console.log(errorMessage, errorCode));
                 // ..
             });
 
